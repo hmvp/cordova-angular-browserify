@@ -4,9 +4,7 @@ Cordova-Angular-Browserify Workflow
 * [Grunt](http://gruntjs.com/) used for automation.
 * Uses [Ionic](http://ionicframework.com/) for out of the box components.
 * Bundled using [Browserify](http://browserify.org/)!
-* All dependencies managed via [npm](https://www.npmjs.org/) or 
-[Bower](http://bower.io/). npm is always the preference in a 
-browserified project to stick to a CommonJS style.
+* All dependencies managed via [npm](https://www.npmjs.org/)
 * Sensible and/or common Cordova defaults applied.
 * Uses [ngCordova](http://ngcordova.com/) to ensure sensible and stable
  Cordova plugin use.
@@ -19,13 +17,7 @@ configure editors.
 * Localised Cordova version setup to avoid version mismatches.
 
 ## Current Project Issues / Tasks
-* The fh-js-sdk is currently not available through npm and the bower version 
-doesn't contain the _/dist_ folder. See this 
-[ticket](https://github.com/feedhenry/fh-js-sdk/pull/86)
-* grunt-browserify isn't correctly applying transforms. Current fallback is to 
-use grunt-shell to invoke Browserify.
-* If new client dependencies are added using bower we need to inject these 
-into the Karma conf file similar to index.html.
+
 
 ## Why?
 
@@ -35,17 +27,6 @@ framework and Browserify is used to compile the application into a single
 bundle. This aids rapid development by allowing the developer to focus on 
 writing code in the _www_ directory and having automation handle updating their 
 bundled JavaScript and index.html.
-
-Working with Browserify and Angular is not as seamless as possible owing to the 
-fact that AngularJS isn't designed with CommonJS (Node.js style requires) or
- AMD (Require.js) JavaScript patterns in 
-mind. What does this mean for us? Well, in an ideal world we could have just a 
-single _script_ tag in our index.html and manage *everything* in JavaScript 
-and all dependencies via npm. OK, that's my ideal world, but it'd be nice! 
-Unfortunately this isn't possible with Angular yet due to the lack of it's 
-support for CommonJS and AMD module loaders. This project works around that 
-with its structure and makes it possible to compile an AngularJS project into 
-a single JavaScript file albeit with Angular dependencies managed via Bower.
 
 
 ## What do we get!?
@@ -121,12 +102,6 @@ To use this project you need to have Node.js and npm installed. Get both in a
 single download [here](http://nodejs.org). This project setup was designed 
 using Node version 0.10.24.
 
-Once you have Node.js and npm installed you'll need to install bower by 
-entering the following in a terminal:
-
-```
-npm install -g bower less@1.7.0
-```
 
 ## Common Tasks
 Note that all these commands are using the locally installed version of Cordova.
@@ -171,7 +146,7 @@ Running this task will automatically open a browser and run all tests in the
 
 ### prepare:[debug | release]
 This task will install all dependencies if required, browserify all source 
-code into a single bundle, and inject bower dependencies into index.html.
+code into a single bundle.
 
 If the release flag is used instead of debug then all CSS and JS are bundled 
 and the *www/* folder is updated.

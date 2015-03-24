@@ -1,11 +1,13 @@
 'use strict';
 
-var constants = require('./constants')
-  , services = require('./services')
-  , factories = require('./factories')
-  , controllers = require('./controllers')
-  , directives = require('./directives')
-  , filters = require('./filters');
+require('angular');
+require('angular-animate');
+require('angular-sanitize');
+require('angular-ui-router');
+require('ionic');
+require('ionic-angular');
+require('ng-cordova');
+
 
 function run ($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -17,15 +19,11 @@ function run ($ionicPlatform) {
 }
 
 module.exports = angular.module('MyApp', [
-  // Ionic
   'ionic',
-  // Angular FH API shim
-  'FH',
-
-  filters.name,
-  constants.name,
-  services.name,
-  factories.name,
-  controllers.name,
-  directives.name
+  require('./filters').name,
+  require('./constants').name,
+  require('./services').name,
+  require('./factories').name,
+  require('./controllers').name,
+  require('./directives').name
 ]).run(run);

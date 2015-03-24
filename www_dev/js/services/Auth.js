@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (Act) {
+module.exports = function () {
   var token = null;
 
   /**
@@ -14,28 +14,7 @@ module.exports = function (Act) {
       return callback('Please enter username and password.', null);
     }
 
-    Act.callFn('login', {
-      u: username,
-      p: password
-    }, function (err, res) {
-      // Sample response JSON, a token means login was successful
-      // {
-      //   error: 'Login failed. User not found.',
-      //   token: '950c4da924d80b6e573ce035c4fcb6f1',
-      // }
-
-      if (err) {
-        callback(err, res);
-      } else if (res.token) {
-        // Store session token for later retrieval / use
-        token = res.token;
-
-        // Return result
-        callback(null, res);
-      } else {
-        callback(res['error'], null);
-      }
-    });
+    //Do actual login stuff
   };
 
 
